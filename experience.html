@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>It's a Natural Vengeance</title>
+		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+		<script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<a-scene loading-screen="dotsColor: white; backgroundColor: #626f28">
+			<!-- Preload -->
+			<a-assets id="allAssets" timeout="30000">
+				<a-asset-item id="model1" src="assets/firstRoom.glb"></a-asset-item>
+				<audio id="sound1" src="assets/ascensionPiano.wav"></audio>
+				<a-asset-item id="model2" src="assets/secondRoom.glb"></a-asset-item>
+				<audio id="sound2" src="assets/ascensionBirds.wav"></audio>
+				<audio id="soundEffects" src="assets/planeScreams.wav"></audio>
+			</a-assets>
+
+			<!-- Camera + Controls + Cursor -->
+			<a-entity id="rig" position="0 4 0">
+				<a-camera wasd-controls-enabled="false">
+                    <a-cursor></a-cursor>
+				</a-camera>
+			</a-entity>
+
+			<!-- Background -->
+			<a-entity id="sky" environment="
+				preset: forest; 
+				skyType: gradient; 
+				skyColor: #e99e83;
+				horizonColor:#ffe1a9;
+				lightPosition: -15 5 0;
+				fog: 0.75;
+				dressing: none
+			"></a-entity>
+
+			<!-- Lights -->
+			<a-light
+				type="point"
+				color="#FFFFFF"
+				position="0 15 0"
+				intensity="0.1"
+				castShadow="true"
+			></a-light>
+			<a-light 
+				type="ambient" 
+				color="#FFFFFF" 
+				intensity="0.25"
+			></a-light>
+
+			<!-- Soundtrack -->
+			<a-sound
+				id="song1"
+				src="#sound1"
+				autoplay="true"
+				loop="true"
+				position="0 15 0"
+			></a-sound>
+			<a-sound
+				id="song2"
+				src="#sound2"
+				loop="true"
+				position="0 15 0"
+			></a-sound>
+			<a-sound
+				id="screams"
+				src="#soundEffects"
+				position="0 15 0"
+			></a-sound>            
+
+			<!-- First Room Model + Glass -->
+			<a-entity id="room1" position="0 1 0">
+				<a-entity 
+					gltf-model="#model1" 
+				></a-entity>
+				<a-entity
+					geometry="primitive: plane; height: 10; width: 10"
+					material="color: #c0d4d1; transparent: true; opacity: 0.5"
+					position="-10.5 5 0"
+					rotation="0 90 0"
+				></a-entity>
+			</a-entity>
+
+			<!-- Second Room Model -->
+			<a-entity 
+				id="room2" 
+				position="0 1 0"
+				visible="false"
+				gltf-model="#model2" 
+			></a-entity>
+		</a-scene>
+
+		<!-- Guiding Texts -->
+		<p class="guidanceText" id="gt1"><em>( Where am I? )</em></p>
+		<p class="guidanceText" id="gt2"><em>( What is this room? )</em></p>
+		<p class="guidanceText" id="gt3"><em>( Wait, is there something in the ceiling? )</em></p>
+		<p class="guidanceText" id="changeText"><em>( WHAT'S GOING ON?! )</em></p>
+
+		<!-- Change Script -->
+		<script src="script.js"></script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+* {
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-weight: 400; 
+	line-height: 26.4px;
+}
+
+.a-loader-title {
+	visibility: hidden;
+}
+
+#startScreen {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+h1 {
+	position: relative;
+	color: white;
+	text-align: center;
+}
+
+#info {
+	position: relative;
+	padding: 2.5%;  
+	color: white;
+	text-align: center;
+}
+
+#startButton {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	
+	background-color: white;
+	color: #626f28;
+	padding: 20px 30px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 200%;
+}
+
+.guidanceText {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	color: white;
+	text-align: center;
+	display: none;
+}
